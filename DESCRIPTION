@@ -10,3 +10,12 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/problemofpoints/popformatting
 BugReports: https://github.com/problemofpoints/popformatting/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1.9000
+Imports: 
+    flextable,
+    officer,
+    ggplot2,
+    magrittr
+Suggests: 
+    roxygen2
