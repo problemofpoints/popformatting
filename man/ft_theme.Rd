@@ -4,10 +4,13 @@
 \alias{ft_theme}
 \title{Apply theme to a flextable}
 \usage{
-ft_theme(x, add_w = 0.1, add_h = 0.05, add_h_header = 0.05)
+ft_theme(x, font_size = 11, add_w = 0.1, add_h = 0.05,
+  add_h_header = 0.05)
 }
 \arguments{
 \item{x}{a flextable object}
+
+\item{font_size}{font size to use, part = "all"}
 
 \item{add_w}{extra width to add in inches}
 

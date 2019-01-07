@@ -7,6 +7,7 @@
 #' @title Apply theme to a flextable
 #' @description Apply theme to a flextable
 #' @param x a flextable object
+#' @param font_size font size to use, part = "all"
 #' @param add_w extra width to add in inches
 #' @param add_h extra height to add in inches
 #' @param add_h_header extra header height to add in inches
@@ -14,7 +15,7 @@
 #' ft <- flextable::flextable(iris)
 #' ft <- ft_theme(ft)
 #' @export
-ft_theme <- function(x, add_w = 0.1, add_h = 0.05, add_h_header = 0.05){
+ft_theme <- function(x, font_size = 11, add_w = 0.1, add_h = 0.05, add_h_header = 0.05){
 
   num_header_rows <- length(x$header$rowheights)
   header_font_color <- "#0083A9"
@@ -33,7 +34,8 @@ ft_theme <- function(x, add_w = 0.1, add_h = 0.05, add_h_header = 0.05){
     flextable::padding(padding.right = 4, part = "all") %>%
     flextable::padding(padding.top = 2, padding.bottom = 4, part = "header") %>%
     flextable::vline_left(border = officer::fp_border(color = "white", style = "solid", width = 1)) %>%
-    flextable::vline_right(border = officer::fp_border(color = "white", style = "solid", width = 1))
+    flextable::vline_right(border = officer::fp_border(color = "white", style = "solid", width = 1)) %>%
+    flextable::fontsize(size = font_size, part = "all")
 
   x$header$rowheights <- x$header$rowheights + add_h_header
   if (num_header_rows > 1) {
