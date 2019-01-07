@@ -20,18 +20,21 @@ ft_theme <- function(x, add_w = 0.1, add_h = 0.05, add_h_header = 0.05){
   header_font_color <- "#0083A9"
   top_bottom_border_color <- "#0083A9"
   body_border_color <- "#d9d9d9"
-  x <- x %>% flextable::border(border = officer::fp_border(width = 0),
-                               part = "all")
-  x <- x %>% flextable::border(num_header_rows, border.bottom = officer::fp_border(color = top_bottom_border_color,
-                                                                                   width = 1), part = "header") %>%
+  x <- x %>% flextable::border_remove()
+
+  x <- x %>% flextable::hline_bottom(border = officer::fp_border(color = top_bottom_border_color, width = 1),
+                                  part = "header") %>%
     flextable::color(color = header_font_color, part = "header") %>%
-    flextable::border(border.bottom = officer::fp_border(color = body_border_color), part = "body") %>%
+    flextable::hline(border = officer::fp_border(color = body_border_color), part = "body") %>%
     flextable::empty_blanks() %>%
-    flextable::border(nrow(x$body$dataset), border.bottom = officer::fp_border(color = top_bottom_border_color, width = 2), part = "body") %>%
-    flextable::border(1, border.top = officer::fp_border(color = top_bottom_border_color, width = 2), part = "header") %>%
+    flextable::hline_bottom(border = officer::fp_border(color = top_bottom_border_color, width = 2), part = "body") %>%
+    flextable::hline_top(border = officer::fp_border(color = top_bottom_border_color, width = 2), part = "header") %>%
     flextable::autofit(add_w = add_w, add_h = add_h) %>%
     flextable::padding(padding.right = 4, part = "all") %>%
-    flextable::padding(padding.top = 2, padding.bottom = 4, part = "header")
+    flextable::padding(padding.top = 2, padding.bottom = 4, part = "header") %>%
+    flextable::vline_left(border = officer::fp_border(color = "white", style = "solid", width = 1)) %>%
+    flextable::vline_right(border = officer::fp_border(color = "white", style = "solid", width = 1))
+
   x$header$rowheights <- x$header$rowheights + add_h_header
   if (num_header_rows > 1) {
     x <- x %>% flextable::align(1, align = "center", part = "header")
