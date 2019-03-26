@@ -81,7 +81,8 @@ add_title_header <- function(x, title, font_size = 12){
     flextable::fontsize(i = 1, part = 'header', size = font_size) %>%
     flextable::height(i = 1, part = 'header', height = first_row_height) %>%
     flextable::bold(i = 1, bold = TRUE, part = "header") %>%
-    flextable::align(i = 1, align = 'left', part = 'header')
+    flextable::align(i = 1, align = 'left', part = 'header') %>%
+    flextable::color(i=1, color = "#0083A9", part = "header")
 
   x$header$spans$rows[1,] <- c(ncol(x_$body$dataset), rep(0, ncol(x_$body$dataset)-1))
   x$header$spans$columns[2:(nrow(save_spans_cols) + 1),] <- save_spans_cols
